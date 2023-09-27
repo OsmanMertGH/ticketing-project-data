@@ -15,6 +15,7 @@ public class RoleServiceImpl implements RoleService {
 
     private final RoleRepository roleRepository;
     private final RoleMapper roleMapper;
+
     public RoleServiceImpl(RoleRepository roleRepository, RoleMapper roleMapper) {
         this.roleRepository = roleRepository;
         this.roleMapper = roleMapper;
@@ -22,11 +23,11 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public List<RoleDTO> listAllRoles() {
-        List<Role> roleList=roleRepository.findAll();
+        List<Role> roleList = roleRepository.findAll();
 
         return roleList.stream().map(roleMapper::covertToDto).collect(Collectors.toList());
-
     }
+
     @Override
     public RoleDTO findById(Long id) {
         roleRepository.findById(id);
